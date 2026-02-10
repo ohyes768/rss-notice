@@ -24,21 +24,24 @@
 
 ```
 rss-notice/
-├── backend/
-│   └── rss_notice_service/     # 服务代码
-│       ├── main.py             # FastAPI 应用入口
-│       ├── models.py           # 数据模型
-│       ├── storage.py          # SQLite 存储
-│       ├── rss_fetcher.py      # RSS 拉取
-│       ├── config.py           # 配置管理
-│       ├── logger.py           # 日志配置
-│       ├── Dockerfile          # Docker 镜像
-│       ├── requirements.txt    # 依赖列表
-│       └── .env                # 环境变量
+├── src/                        # 服务代码
+│   ├── main.py                # FastAPI 应用入口
+│   ├── models.py              # 数据模型
+│   ├── storage.py             # SQLite 存储
+│   ├── rss_fetcher.py         # RSS 拉取
+│   ├── config.py              # 配置管理
+│   ├── logger.py              # 日志配置
+│   ├── Dockerfile             # Docker 镜像
+│   ├── requirements.txt       # 依赖列表
+│   ├── rss_sources.yaml       # RSS 源配置
+│   └── .env                   # 环境变量
 ├── docker/
-│   ├── docker-compose.yml      # Docker Compose 配置
-│   └── .env                    # Docker 环境变量
-└── data/                       # 数据持久化目录
+│   ├── docker-compose.yml     # Docker Compose 配置
+│   └── .env                   # Docker 环境变量
+├── data/                      # 数据持久化目录
+├── docs/                      # 项目文档
+├── discuss/                   # 讨论文档
+└── README.md                  # 项目说明
 ```
 
 ## 快速开始
@@ -182,7 +185,7 @@ docker logs -f rss-notice-service
 ### 本地运行
 
 ```bash
-cd backend/rss_notice_service
+cd src
 uv run uvicorn main:app --reload --host 0.0.0.0 --port 8020
 ```
 

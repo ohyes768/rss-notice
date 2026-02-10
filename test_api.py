@@ -97,7 +97,7 @@ def main():
 
     except requests.exceptions.ConnectionError:
         print("\n❌ 连接失败！请确保服务已启动:")
-        print("   cd backend/rss_notice_service")
+        print("   cd src")
         print("   uv run uvicorn main:app --reload --host 0.0.0.0 --port 8020")
     except Exception as e:
         print(f"\n❌ 测试出错: {e}")

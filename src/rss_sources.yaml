@@ -1,0 +1,12 @@
+# RSS订阅源配置
+# 格式：tag: {name: "公众号名称", url: "RSS链接"}
+
+sources:
+  touzi:
+    name: "投基有术"
+    url: "http://rss.jintiankansha.me/rss/GM4DMMJYHB6DQNLFMRRWCOBRGZSGKNJSMFSWKMZSG4ZDENRQGZQWIYZRGVSTQYTCHAYGMZRVHEYQ===="
+
+  # 可以添加更多RSS源
+  # example:
+  #   name: "示例公众号"
+  #   url: "http://example.com/rss"

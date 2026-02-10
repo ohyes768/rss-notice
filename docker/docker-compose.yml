@@ -3,7 +3,7 @@ version: '3.8'
 services:
   rss-notice-service:
     build:
-      context: ../backend/rss_notice_service
+      context: ../src
       dockerfile: Dockerfile
     container_name: rss-notice-service
     ports:

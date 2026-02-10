@@ -377,7 +377,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8020"]
 version: '3.8'
 services:
   rss-notice-service:
-    build: ../backend/rss_notice_service
+    build: ../src
     container_name: rss-notice-service
     ports:
       - "8020:8020"
