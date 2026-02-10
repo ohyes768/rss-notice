@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  rss-notice-service:
+    build:
+      context: ../backend/rss_notice_service
+      dockerfile: Dockerfile
+    container_name: rss-notice-service
+    ports:
+      - "8020:8020"
+    environment:
+      - RSS_URL=${RSS_URL}
+      - DB_PATH=${DB_PATH:-/app/data/rss_notice.db}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    volumes:
+      - ./data:/app/data  # 持久化数据目录
+    networks:
+      - api-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8020/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+networks:
+  api-network:
+    name: api-gateway_api-network
+    external: true
