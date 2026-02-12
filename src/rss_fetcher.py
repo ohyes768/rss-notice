@@ -51,13 +51,24 @@ class RSSFetcher:
 
             feed_title = feed.feed.get('title', 'Unknown RSS')
 
-            # 解析订阅源更新时间
+            # 解析订阅源更新时间（RSS服务抓取时间）
             feed_updated = None
+            # 优先使用 updated，其次使用 published
             if hasattr(feed.feed, 'updated_parsed') and feed.feed.updated_parsed:
                 try:
                     feed_updated = datetime(*feed.feed.updated_parsed[:6])
                 except:
                     logger.debug("无法解析 feed.updated_parsed")
+            elif hasattr(feed.feed, 'published_parsed') and feed.feed.published_parsed:
+                try:
+                    feed_updated = datetime(*feed.feed.published_parsed[:6])
+                except:
+                    logger.debug("无法解析 feed.published_parsed")
+
+            if feed_updated:
+                logger.info(f"RSS源更新时间: {feed_updated}")
+            else:
+                logger.debug("RSS源未提供更新时间")
 
             # 解析文章
             all_articles = []
