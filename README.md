@@ -122,7 +122,7 @@ GET /api/rss/check
 
 2. **HTTP Request 节点**
    - Method: `GET`
-   - URL: `http://api-gateway:8010/api/rss-notice/check`
+   - URL: `http://api-gateway:8010/api/rss-notice/check?tag=touzi`
 
 3. **判断节点**（IF）
    - 条件: `{{$json.new_count > 0}}`
@@ -148,7 +148,16 @@ services:
       - path: /api/rss-notice/refresh
         method: POST
         backend_path: /api/rss/refresh
+
+      - path: /api/rss-notice/sources
+        method: GET
+        backend_path: /api/rss/sources
 ```
+
+**路由说明**：
+- `/api/rss-notice/check?tag=touzi` - 检查指定 RSS 源的新文章（tag 参数必需）
+- `/api/rss-notice/refresh?tag=touzi&days=7` - 清除缓存（tag 和 days 参数可选）
+- `/api/rss-notice/sources` - 列出所有配置的 RSS 源
 
 ## 配置说明
 
