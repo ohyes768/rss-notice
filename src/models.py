@@ -26,6 +26,7 @@ class RSSCheckResponse(BaseModel):
     """RSS检查响应"""
     feed_title: str = Field(..., description="订阅源标题")
     feed_url: str = Field(..., description="订阅源URL")
+    feed_updated: Optional[datetime] = Field(None, description="订阅源最后更新时间")
     check_time: datetime = Field(default_factory=datetime.now, description="检查时间")
     new_count: int = Field(..., description="新增文章数量")
     articles: List[Article] = Field(..., description="新增文章列表")

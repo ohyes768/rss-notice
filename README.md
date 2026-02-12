@@ -97,6 +97,7 @@ GET /api/rss/check
 {
   "feed_title": "今天看啥RSS",
   "feed_url": "http://rss.jintiankansha.me/...",
+  "feed_updated": "2026-02-11T10:30:00Z",
   "check_time": "2026-02-09T02:45:00",
   "new_count": 3,
   "articles": [

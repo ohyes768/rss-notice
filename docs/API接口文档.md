@@ -90,6 +90,7 @@ curl "http://localhost:8020/api/rss/check?tag=touzi"
 {
   "feed_title": "投基有术 - 今天看啥",
   "feed_url": "http://rss.jintiankansha.me/rss/GM4DMMJYHB6DQNLFMRRWCOBRGZSGKNJSMFSWKMZSG4ZDENRQGZQWIYZRGVSTQYTCHAYGMZRVHEYQ====",
+  "feed_updated": "2026-02-11T10:30:00Z",
   "check_time": "2026-02-10T23:24:48.123456Z",
   "new_count": 3,
   "articles": [
@@ -127,6 +128,7 @@ curl "http://localhost:8020/api/rss/check?tag=touzi"
 |------|------|------|
 | feed_title | string | 订阅源标题 |
 | feed_url | string | 订阅源 URL |
+| feed_updated | string/null | 订阅源最后更新时间（ISO 8601 格式） |
 | check_time | string | 检查时间 |
 | new_count | int | 新文章数量 |
 | articles | array | 文章列表 |
@@ -317,6 +319,7 @@ curl http://localhost:8020/api/rss/sources
 - `/api/rss/refresh`: 新增可选参数 `tag` 和 `days`
 
 **返回值变更**:
+- `RSSCheckResponse` 对象：新增 `feed_updated` 字段
 - `Article` 对象：移除 `summary` 和 `content` 字段
 - `Article` 对象：新增 `markdown` 字段
 

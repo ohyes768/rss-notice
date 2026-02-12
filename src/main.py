@@ -65,6 +65,7 @@ async def check_new_articles(tag: str = Query(..., description="RSS源的TAG标�
         response = RSSCheckResponse(
             feed_title=result['feed_title'],
             feed_url=rss_url,
+            feed_updated=result['feed_updated'],
             new_count=len(new_articles),
             articles=articles
         )

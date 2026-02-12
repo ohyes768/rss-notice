@@ -51,6 +51,14 @@ class RSSFetcher:
 
             feed_title = feed.feed.get('title', 'Unknown RSS')
 
+            # 解析订阅源更新时间
+            feed_updated = None
+            if hasattr(feed.feed, 'updated_parsed') and feed.feed.updated_parsed:
+                try:
+                    feed_updated = datetime(*feed.feed.updated_parsed[:6])
+                except:
+                    logger.debug("无法解析 feed.updated_parsed")
+
             # 解析文章
             all_articles = []
             for entry in feed.entries:
@@ -96,6 +104,7 @@ class RSSFetcher:
             return {
                 'tag': tag,
                 'feed_title': feed_title,
+                'feed_updated': feed_updated,
                 'new_articles': new_articles
             }
 
